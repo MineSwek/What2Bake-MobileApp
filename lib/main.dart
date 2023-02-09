@@ -6,7 +6,6 @@ import 'package:what2bake/pages/ingredients.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:what2bake/widgets/appbar.dart';
-import 'data/globalvar.dart' as globals;
 
 
 void main() async {
@@ -59,12 +58,14 @@ class _MainWindowState extends State<MainWindow> with SingleTickerProviderStateM
       body: Column(
         children:  [
             GestureDetector(
-              onVerticalDragUpdate: (details) {
-                setState(() {
-                  _showFirst = !_showFirst;
-                  Future.delayed(Duration(seconds: 1));
-                  buttonvis = !buttonvis;
-                });
+              onVerticalDragEnd: (details) {
+                if(details.velocity.pixelsPerSecond.distance > 50 && details.velocity.pixelsPerSecond.direction < -1) {
+                  setState(() {
+                    _showFirst = !_showFirst;
+                    Future.delayed(Duration(seconds: 1));
+                    buttonvis = !buttonvis;
+                  });
+                }
               },
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 600),

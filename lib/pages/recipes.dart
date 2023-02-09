@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:what2bake/services/api.dart';
 import 'package:what2bake/widgets/recipeCard.dart';
-import '../data/globalvar.dart' as globals;
 
 class Recipes extends StatefulWidget {
   const Recipes({super.key});
