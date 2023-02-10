@@ -32,12 +32,17 @@ class _AppbarState extends State<Appbar> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SvgPicture.asset('assets/Logo.svg'),
-              const CircleAvatar(
-                radius: 30,
-                backgroundColor: Color(0xFF414141),
-                child: CircleAvatar(
-                  radius: 25,
-                  backgroundImage: NetworkImage('https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/728880/77c1d34497f69650959e1e48184f228a9f5f8b10.gif'),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/login');
+                },
+                child: const CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Color(0xFF414141),
+                  child: CircleAvatar(
+                    radius: 25,
+                    backgroundImage: NetworkImage('https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/728880/77c1d34497f69650959e1e48184f228a9f5f8b10.gif'),
+                  ),
                 ),
               ),
             ],

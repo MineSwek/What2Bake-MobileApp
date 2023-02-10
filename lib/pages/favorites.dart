@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:what2bake/widgets/appbar.dart';
 
 
 class Favorites extends StatefulWidget {

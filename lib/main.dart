@@ -3,13 +3,23 @@ import 'package:what2bake/pages/favorites.dart';
 import 'package:what2bake/pages/home.dart';
 import 'package:what2bake/pages/recipes.dart';
 import 'package:what2bake/pages/ingredients.dart';
+import 'package:what2bake/pages/profile.dart';
+import 'package:what2bake/pages/login.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:what2bake/widgets/appbar.dart';
 
 
+
 void main() async {
-  runApp(const MaterialApp(home: MainWindow()));
+  runApp(MaterialApp(
+    initialRoute: "/",
+    routes: {
+      "/": (context) => const MainWindow(),
+      "/profile": (context) => const Profile(),
+      "/login": (context) => const Login(),
+    },
+  ));
 }
 
 class MainWindow extends StatefulWidget {
@@ -28,7 +38,6 @@ class _MainWindowState extends State<MainWindow> with SingleTickerProviderStateM
   final _pageController = PageController();
 
   late List<Widget> _pages;
-
 
   void _onPageChanged() {
     setState(() {
@@ -62,7 +71,7 @@ class _MainWindowState extends State<MainWindow> with SingleTickerProviderStateM
                 if(details.velocity.pixelsPerSecond.distance > 50 && details.velocity.pixelsPerSecond.direction < -1) {
                   setState(() {
                     _showFirst = !_showFirst;
-                    Future.delayed(Duration(seconds: 1));
+                    Future.delayed(const Duration(seconds: 1));
                     buttonvis = !buttonvis;
                   });
                 }
