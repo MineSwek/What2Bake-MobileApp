@@ -1,6 +1,6 @@
 # What2Bake Client
 
-![ReadmeLogo](https://user-images.githubusercontent.com/85877644/218214928-9223a206-b2a6-4f93-a295-982cb2c2d480.png)
+<img src="https://user-images.githubusercontent.com/85877644/218215835-3b2b50e2-53bc-4dfc-baf7-4c33c1461b3b.png" width="100%">
 
 Mobile Client for What2Bake Application
 
