@@ -11,7 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:what2bake/widgets/appbar.dart';
 
 
-
+//KOMENTARZ
 void main() async {
   runApp(MaterialApp(
     initialRoute: "/",
