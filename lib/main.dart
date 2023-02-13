@@ -5,6 +5,7 @@ import 'package:what2bake/pages/recipes.dart';
 import 'package:what2bake/pages/ingredients.dart';
 import 'package:what2bake/pages/profile.dart';
 import 'package:what2bake/pages/login.dart';
+import 'package:what2bake/pages/register.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:what2bake/widgets/appbar.dart';
@@ -18,6 +19,7 @@ void main() async {
       "/": (context) => const MainWindow(),
       "/profile": (context) => const Profile(),
       "/login": (context) => const Login(),
+      "/register": (context) => const Register(),
     },
   ));
 }

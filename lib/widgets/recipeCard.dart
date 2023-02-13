@@ -257,9 +257,6 @@ class _RecipeCardState extends State<RecipeCard> {
                         backgroundStrokeWidth: 5,
                         foregroundGapSize: 20,
                         foregroundDashSize: 360/(widget.recipes.products!.length+0.01)-20,
-                        animation: true,
-                        animationDuration: const Duration(milliseconds: 700),
-                        animationCurve: Curves.easeInBack,
                         child: Container(
                           decoration: const BoxDecoration(
                               color: Color(0xff393838),

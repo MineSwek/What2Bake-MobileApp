@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:what2bake/pages/register.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class _LoginState extends State<Login> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 150, bottom: 30),
+                padding: const EdgeInsets.only(top: 100, bottom: 30),
                   child: SvgPicture.asset(
                       'assets/Logo.svg',
                     width: 350,
@@ -59,10 +60,10 @@ class _LoginState extends State<Login> {
                         color: Color(0xFF393838),
                         borderRadius: BorderRadius.all(Radius.circular(10))
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 2),
-                        child: TextField(
-                            decoration: InputDecoration(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(12, 2, 0, 2),
+                        child: TextFormField(
+                            decoration: const InputDecoration(
                               hintText: "Email",
                               hintStyle: TextStyle(
                                 fontFamily: "Lato",
@@ -77,7 +78,7 @@ class _LoginState extends State<Login> {
                               border: InputBorder.none,
                           ),
                           cursorColor: Colors.white,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 18,
                               color: Colors.white,
                               fontWeight: FontWeight.w500,
@@ -92,10 +93,10 @@ class _LoginState extends State<Login> {
                             color: Color(0xFF393838),
                             borderRadius: BorderRadius.all(Radius.circular(10))
                         ),
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 2),
-                          child: TextField(
-                            decoration: InputDecoration(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(12, 2, 0, 2),
+                          child: TextFormField(
+                            decoration: const InputDecoration(
                               hintText: "Hasło",
                               hintStyle: TextStyle(
                                 fontFamily: "Lato",
@@ -110,11 +111,12 @@ class _LoginState extends State<Login> {
                               border: InputBorder.none,
                             ),
                             cursorColor: Colors.white,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 18,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500
                             ),
+                            obscureText: true,
                           ),
                         ),
                       ),
@@ -131,7 +133,7 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 40,vertical: 5),
+                          padding: EdgeInsets.symmetric(horizontal: 30,vertical: 2),
                           child: Text(
                             "Zaloguj się",
                             style: TextStyle(
@@ -166,7 +168,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 120),
+                      padding: const EdgeInsets.only(top: 170),
                       child: Align(
                         child: RichText(
                             textAlign: TextAlign.center,
@@ -183,7 +185,19 @@ class _LoginState extends State<Login> {
                                           fontWeight: FontWeight.bold
                                       ),
                                       recognizer: TapGestureRecognizer()..onTap = () {
-                                        launch("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+                                        Navigator.push(
+                                                  context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (context, animation, secondaryAnimation) => Register(),
+                                            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                                              return FadeTransition(
+                                                opacity: animation,
+                                                child: child,
+                                              );
+                                            },
+                                            transitionDuration: const Duration(milliseconds: 400),
+                                          ),
+                                        );
                                       }
                                   ),
                                 ]
