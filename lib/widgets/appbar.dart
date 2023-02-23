@@ -34,7 +34,7 @@ class _AppbarState extends State<Appbar> {
               SvgPicture.asset('assets/Logo.svg'),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/login');
+                  Navigator.pushNamed(context, '/profile');
                 },
                 child: const CircleAvatar(
                   radius: 30,

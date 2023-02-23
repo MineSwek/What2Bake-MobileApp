@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:what2bake/pages/login.dart';
 
+
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
 
@@ -12,7 +13,6 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +155,6 @@ class _RegisterState extends State<Register> {
                         padding: const EdgeInsets.symmetric(vertical: 20),
                         child: TextButton(
                           onPressed: () {
-                            print("works");
                           },
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.resolveWith<Color?>(
@@ -193,7 +192,7 @@ class _RegisterState extends State<Register> {
                                           fontWeight: FontWeight.bold
                                       ),
                                       recognizer: TapGestureRecognizer()..onTap = () {
-                                        launch("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+                                        launchUrl(Uri(path: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
                                       }
                                   ),
                                 ]

@@ -7,8 +7,8 @@ var client = http.Client();
 
 Future<dynamic> getAllProducts() async {
 
-  var url = 'http://132.226.204.66:81/product/';
-  var url2 = 'http://132.226.204.66:81/category/';
+  var url = 'http://130.162.33.102:8080/product/';
+  var url2 = 'http://130.162.33.102:8080/category/';
   var body = {
     "productOrder": ["ALPHABETIC_ASC"]
   };
@@ -66,7 +66,7 @@ Future<dynamic> getRecipes(int page) async {
   final prefs = await SharedPreferences.getInstance();
   var products = prefs.getStringList('0')?.isEmpty == false ? prefs.getStringList('0')!.map(int.parse).toList() : [0];
 
-  var url = 'http://132.226.204.66:81/recipe/';
+  var url = 'http://130.162.33.102:8080/recipe/';
   Map<String, Object> body;
   if(products == [0]) {
     body = {

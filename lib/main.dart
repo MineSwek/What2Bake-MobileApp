@@ -11,10 +11,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:what2bake/widgets/appbar.dart';
 
 
-//KOMENTARZ
 void main() async {
   runApp(MaterialApp(
-    initialRoute: "/",
+    initialRoute: "/login",
     routes: {
       "/": (context) => const MainWindow(),
       "/profile": (context) => const Profile(),

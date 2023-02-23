@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:what2bake/pages/register.dart';
+import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'dart:io';
+import 'dart:async';
+import 'package:what2bake/data/globalvar.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -13,6 +18,66 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
 
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  Future<bool> authUser() async {
+    try {
+      await pb.collection('users').authWithPassword(
+        emailController.text,
+        passwordController.text,
+      );
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> authGoogle() async {
+    try {
+
+        final result = await pb.collection('users').listAuthMethods();
+        const callbackUrlScheme = 'w2b.com';
+        const googleClientId = '456269539101-a3gse15pqgmfqpepp6a66cl5jds52cuh';
+        const redirectUri = 'http://192.168.8.115.nip.io:8080/';
+
+        final url = Uri.https('accounts.google.com', '/o/oauth2/auth', {
+          'response_type': 'code',
+          'client_id': googleClientId,
+          'redirect_uri': redirectUri,
+          'scope': 'email',
+        });
+
+        for (var element in result.authProviders) {
+          if (element.name == "google") {
+            final result = await FlutterWebAuth2.authenticate(
+                url: element.authUrl + redirectUri,
+                callbackUrlScheme: callbackUrlScheme
+            );
+            final code = Uri
+                .parse(result)
+                .queryParameters['code'];
+            print(code);
+            print("AuthURL: ${element.authUrl}");
+            await pb.collection('users').authWithOAuth2(
+              'google',
+              code!,
+              element.codeVerifier,
+              "https://w2b.com",
+
+            );
+          }
+        }
+
+        print(pb.authStore.token);
+
+
+      return true;
+    } catch(e) {
+        print(e);
+        return false;
+      }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +128,7 @@ class _LoginState extends State<Login> {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(12, 2, 0, 2),
                         child: TextFormField(
+                          controller: emailController,
                             decoration: const InputDecoration(
                               hintText: "Email",
                               hintStyle: TextStyle(
@@ -96,6 +162,7 @@ class _LoginState extends State<Login> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(12, 2, 0, 2),
                           child: TextFormField(
+                            controller: passwordController,
                             decoration: const InputDecoration(
                               hintText: "Hasło",
                               hintStyle: TextStyle(
@@ -122,8 +189,23 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     TextButton(
-                        onPressed: () {
-                            print("works");
+                        onPressed: () async {
+                            if(!await authUser()) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'Nieprawidłowy email lub hasło',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ));
+
+                            } else {
+                              Navigator.of(context).popUntil((route) => route.isFirst);
+                            }
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.resolveWith<Color?>(
@@ -160,7 +242,7 @@ class _LoginState extends State<Login> {
                                         fontWeight: FontWeight.bold
                                     ),
                                     recognizer: TapGestureRecognizer()..onTap = () {
-                                      launch("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+                                      launchUrl(Uri(path: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
                                     }
                                 ),
                               ]
@@ -168,7 +250,19 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 170),
+                      padding: const EdgeInsets.symmetric(vertical: 40),
+                      child: GestureDetector(
+                        onTap: () {
+                          authGoogle();
+                        },
+                        child: SvgPicture.asset(
+                            "assets/google.svg",
+                        width: 60,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
                       child: Align(
                         child: RichText(
                             textAlign: TextAlign.center,
