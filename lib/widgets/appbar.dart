@@ -53,9 +53,14 @@ class _AppbarState extends State<Appbar> {
                   if(pb.authStore.isValid) {
                     pb.authStore.clear();
                     setState(() {});
-                    print("setted");
                   } else {
-                    Navigator.pushNamed(context, "/login").then((value) => setState(() {}));
+                    Navigator.pushNamed(context, "/login").then((value) {
+                      try {
+                        setState(() {});
+                      } catch(e) {
+                        print(e);
+                      };
+                    });
                   }
                 },
                 child: CircleAvatar(
