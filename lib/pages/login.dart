@@ -4,8 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:what2bake/pages/register.dart';
 import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'dart:io';
 import 'dart:async';
 import 'package:what2bake/data/globalvar.dart';
 
@@ -29,6 +27,7 @@ class _LoginState extends State<Login> {
       );
       return true;
     } catch (e) {
+      print(e);
       return false;
     }
   }

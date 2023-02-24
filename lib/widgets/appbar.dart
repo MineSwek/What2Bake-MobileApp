@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:what2bake/data/globalvar.dart';
 
 class Appbar extends StatefulWidget {
   const Appbar({Key? key}) : super(key: key);
@@ -23,8 +24,23 @@ class Appbar extends StatefulWidget {
 }
 
 class _AppbarState extends State<Appbar> {
+  String avatImg = "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/728880/77c1d34497f69650959e1e48184f228a9f5f8b10.gif";
+
+  void checkAvat() async {
+    if(pb.authStore.isValid) {
+      final record = await pb.collection('users').getOne(pb.authStore.model.id);
+      if(record.data['avatar'] != "") {
+        avatImg = "http://130.162.33.102:9090/api/files/${record.collectionId}/${record.id}/${record.data['avatar']}";
+      }
+    } else {
+      avatImg = "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/728880/77c1d34497f69650959e1e48184f228a9f5f8b10.gif";
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
+    checkAvat();
     return AppBar(
       title: Column(
         children: [
@@ -34,14 +50,20 @@ class _AppbarState extends State<Appbar> {
               SvgPicture.asset('assets/Logo.svg'),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/profile');
+                  if(pb.authStore.isValid) {
+                    pb.authStore.clear();
+                    setState(() {});
+                    print("setted");
+                  } else {
+                    Navigator.pushNamed(context, "/login").then((value) => setState(() {}));
+                  }
                 },
-                child: const CircleAvatar(
+                child: CircleAvatar(
                   radius: 30,
-                  backgroundColor: Color(0xFF414141),
+                  backgroundColor: const Color(0xFF414141),
                   child: CircleAvatar(
                     radius: 25,
-                    backgroundImage: NetworkImage('https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/728880/77c1d34497f69650959e1e48184f228a9f5f8b10.gif'),
+                    backgroundImage: NetworkImage(avatImg),
                   ),
                 ),
               ),

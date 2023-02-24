@@ -13,7 +13,7 @@ import 'package:what2bake/widgets/appbar.dart';
 
 void main() async {
   runApp(MaterialApp(
-    initialRoute: "/login",
+    initialRoute: "/",
     routes: {
       "/": (context) => const MainWindow(),
       "/profile": (context) => const Profile(),
@@ -45,7 +45,6 @@ class _MainWindowState extends State<MainWindow> with SingleTickerProviderStateM
       _selectedIndex = _pageController.page!.round();
     });
   }
-
   @override
   void initState() {
     _pageController.addListener(_onPageChanged);
@@ -57,8 +56,8 @@ class _MainWindowState extends State<MainWindow> with SingleTickerProviderStateM
       const Favorites(),
     ];
 
-
     super.initState();
+
   }
   bool iconstate = true;
   bool buttonvis = false;
@@ -172,6 +171,7 @@ class _MainWindowState extends State<MainWindow> with SingleTickerProviderStateM
         unselectedItemColor: const Color(0xFFBBBBBB),
       ),
     );
+
   }
 }
 
