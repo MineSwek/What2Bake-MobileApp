@@ -203,7 +203,7 @@ class _LoginState extends State<Login> {
                                   ));
 
                             } else {
-                              Navigator.of(context).popUntil((route) => route.isFirst);
+                              Navigator.popUntil(context, ModalRoute.withName("/settings"));
                             }
                         },
                         style: ButtonStyle(

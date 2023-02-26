@@ -6,6 +6,7 @@ import 'package:what2bake/pages/ingredients.dart';
 import 'package:what2bake/pages/profile.dart';
 import 'package:what2bake/pages/login.dart';
 import 'package:what2bake/pages/register.dart';
+import 'package:what2bake/pages/settings.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:what2bake/widgets/appbar.dart';
@@ -19,7 +20,9 @@ void main() async {
       "/profile": (context) => const Profile(),
       "/login": (context) => const Login(),
       "/register": (context) => const Register(),
+      "/settings": (context) => const Settings(),
     },
+    theme: ThemeData.dark(),
   ));
 }
 
@@ -126,9 +129,14 @@ class _MainWindowState extends State<MainWindow> with SingleTickerProviderStateM
                 ),
             ),
             Flexible(
-              child: PageView(
-                controller: _pageController,
-                children: _pages,
+              child: GestureDetector(
+                onTap: () {
+                  FocusScope.of(context).unfocus();
+                },
+                child: PageView(
+                  controller: _pageController,
+                  children: _pages,
+                ),
               ),
             ),
           ],
@@ -157,7 +165,6 @@ class _MainWindowState extends State<MainWindow> with SingleTickerProviderStateM
         onTap: (int index) {
           _pageController.animateToPage(index, duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
         },
-        elevation: 0,
         type: BottomNavigationBarType.fixed,
         backgroundColor: const Color(0xFF272727),
         selectedLabelStyle: GoogleFonts.montserrat(
