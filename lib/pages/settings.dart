@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:what2bake/widgets/appbar.dart';
-
+import 'package:what2bake/widgets/settingsTile.dart';
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
 
@@ -10,11 +10,19 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
 
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width;
     final height = size.height;
+    final divider = Container(
+      margin: EdgeInsets.fromLTRB(width/6, 0, width/15, 0),
+      child: const Divider(
+        color: Color(0xFF303030),
+        thickness: 3.0,
+      ),
+    );
     /*
     return Scaffold(
       appBar: AppBar(
@@ -53,213 +61,23 @@ class _SettingsState extends State<Settings> {
             ),
           ),
 
-          /* ZALOGUJ SIĘ */
+          SettingsTile(width: width, height: height, localisation: "/login", icon: Icons.login_outlined, title: "Zaloguj się"),
+          divider,
 
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, "/login");
-            },
-            child: ListTile(
-              tileColor: const Color(0xFF232323),
-              leading: Icon(
-                  Icons.account_circle_outlined,
-                size: width/10,
-                color: const Color(0xFF616161),
-              ),
-              trailing: Icon(
-                  Icons.chevron_right,
-                size: width/10,
-              ),
-              title: const Text(
-                  "Zaloguj się",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.fromLTRB(width/6, 0, width/15, 0),
-            child: const Divider(
-              color: Color(0xFF393939),
-              thickness: 3.0,
-            ),
-          ),
+          SettingsTile(width: width, height: height, localisation: "/notifications", icon: Icons.notifications_none_outlined, title: "Powiadomienia"),
+          divider,
 
-          /*POWIADOMIENIA*/
+          SettingsTile(width: width, height: height, localisation: "/changetheme", icon: Icons.remove_red_eye_outlined, title: "Zmień motyw"),
+          divider,
 
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, "/notifications");
-            },
-            child: ListTile(
-              tileColor: const Color(0xFF232323),
-              leading: Icon(
-                Icons.notifications_none_outlined,
-                size: width/10,
-                color: const Color(0xFF616161),
-              ),
-              trailing: Icon(
-                Icons.chevron_right,
-                size: width/10,
-              ),
-              title: const Text(
-                "Powiadomienia",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.fromLTRB(width/6, 0, width/15, 0),
-            child: const Divider(
-              color: Color(0xFF393939),
-              thickness: 3.0,
-            ),
-          ),
+          SettingsTile(width: width, height: height, localisation: "/help", icon: Icons.help_outline, title: "Pomoc"),
+          divider,
 
+          SettingsTile(width: width, height: height, localisation: "/aboutus", icon: Icons.info_outline_rounded, title: "O nas"),
+          divider,
 
-          /*ZMIEŃ MOTYW*/
-
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, "/changetheme");
-            },
-            child: ListTile(
-              tileColor: const Color(0xFF232323),
-              leading: Icon(
-                Icons.colorize_outlined,
-                size: width/10,
-                color: const Color(0xFF616161),
-              ),
-              trailing: Icon(
-                Icons.chevron_right,
-                size: width/10,
-              ),
-              title: const Text(
-                "Zmień motyw",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.fromLTRB(width/6, 0, width/15, 0),
-            child: const Divider(
-              color: Color(0xFF393939),
-              thickness: 3.0,
-            ),
-          ),
-
-
-          /*POMOC*/
-
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, "/help");
-            },
-            child: ListTile(
-              tileColor: const Color(0xFF232323),
-              leading: Icon(
-                Icons.help_outline,
-                size: width/10,
-                color: const Color(0xFF616161),
-              ),
-              trailing: Icon(
-                Icons.chevron_right,
-                size: width/10,
-              ),
-              title: const Text(
-                "Pomoc",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.fromLTRB(width/6, 0, width/15, 0),
-            child: const Divider(
-              color: Color(0xFF393939),
-              thickness: 3.0,
-            ),
-          ),
-
-
-          /*O NAS*/
-
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, "/aboutus");
-            },
-            child: ListTile(
-              tileColor: const Color(0xFF232323),
-              leading: Icon(
-                Icons.info_outline_rounded,
-                size: width/10,
-                color: const Color(0xFF616161),
-              ),
-              trailing: Icon(
-                Icons.chevron_right,
-                size: width/10,
-              ),
-              title: const Text(
-                "O nas",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.fromLTRB(width/6, 0, width/15, 0),
-            child: const Divider(
-              color: Color(0xFF393939),
-              thickness: 3.0,
-            ),
-          ),
-
-
-          /*DOCEŃ NASZĄ PRACĘ*/
-
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, "/tips");
-            },
-            child: ListTile(
-              tileColor: const Color(0xFF232323),
-              leading: Icon(
-                Icons.coffee_outlined,
-                size: width/10,
-                color: const Color(0xFF616161),
-              ),
-              trailing: Icon(
-                Icons.chevron_right,
-                size: width/10,
-              ),
-              title: const Text(
-                "Doceń naszą pracę",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.fromLTRB(width/6, 0, width/15, 0),
-            child: const Divider(
-              color: Color(0xFF393939),
-              thickness: 3.0,
-            ),
-          ),
+          SettingsTile(width: width, height: height, localisation: "/tips", icon: Icons.coffee_outlined, title: "Doceń naszą pracę"),
+          divider,
 
         ],
       ),
