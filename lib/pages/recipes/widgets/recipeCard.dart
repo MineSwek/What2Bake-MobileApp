@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../services/model.dart';
+import 'package:what2bake/services/model.dart';
 import 'package:flex_list/flex_list.dart';
 import 'package:dashed_circular_progress_bar/dashed_circular_progress_bar.dart';
 import 'package:url_launcher/url_launcher.dart';

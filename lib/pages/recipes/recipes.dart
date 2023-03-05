@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:what2bake/services/api.dart';
-import 'package:what2bake/widgets/recipeCard.dart';
+import 'package:what2bake/pages/recipes/widgets/recipeCard.dart';
 
 class Recipes extends StatefulWidget {
   const Recipes({super.key});

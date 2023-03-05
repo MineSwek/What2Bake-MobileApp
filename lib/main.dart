@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:what2bake/pages/favorites.dart';
-import 'package:what2bake/pages/home.dart';
-import 'package:what2bake/pages/recipes.dart';
-import 'package:what2bake/pages/ingredients.dart';
-import 'package:what2bake/pages/profile.dart';
-import 'package:what2bake/pages/login.dart';
-import 'package:what2bake/pages/register.dart';
-import 'package:what2bake/pages/settings.dart';
+import 'package:what2bake/pages/favorites/favorites.dart';
+import 'package:what2bake/pages/home/home.dart';
+import 'package:what2bake/pages/recipes/recipes.dart';
+import 'package:what2bake/pages/ingredients/ingredients.dart';
+import 'package:what2bake/pages/profile/profile.dart';
+import 'package:what2bake/pages/autorization/login.dart';
+import 'package:what2bake/pages/autorization/register.dart';
+import 'package:what2bake/pages/settings/settings.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:what2bake/widgets/appbar.dart';
-
+import 'package:what2bake/globalWidgets/appbar.dart';
 
 void main() async {
   runApp(MaterialApp(

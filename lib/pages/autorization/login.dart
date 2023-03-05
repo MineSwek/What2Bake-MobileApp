@@ -1,11 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uni_links/uni_links.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:what2bake/pages/register.dart';
-import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
+import 'package:what2bake/pages/autorization/register.dart';
 import 'dart:async';
 import 'package:what2bake/data/globalvar.dart';
+import 'package:what2bake/pages/autorization/widgets/AutTextField.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -18,6 +20,62 @@ class _LoginState extends State<Login> {
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  Uri? _initialURI;
+  Uri? _currentURI;
+  Object? _err;
+
+  StreamSubscription? _streamSubscription;
+
+  Future<void> initURIHandler() async {
+    if (!initialURILinkHandled) {
+      initialURILinkHandled = true;
+      print("Invoked _initURIHandler");
+      try {
+        final initialURI = await getInitialUri();
+        if (initialURI != null) {
+          if (!mounted) {
+            return;
+          }
+          print("Initial URI received $initialURI");
+          setState(() {
+            _initialURI = initialURI;
+          });
+        } else {
+          print("Null Initial URI received");
+        }
+      } catch(e) {
+        print(e.toString());
+      }
+    }
+  }
+
+  void incomingLinkHandler() {
+    if (!kIsWeb) {
+      _streamSubscription = uriLinkStream.listen((Uri? uri) {
+        if (!mounted) {
+          return;
+        }
+        print('Received URI: $uri');
+        setState(() {
+          _currentURI = uri;
+          _err = null;
+        });
+      }, onError: (Object err) {
+        if (!mounted) {
+          return;
+        }
+        print('Error occurred: $err');
+        setState(() {
+          _currentURI = null;
+          if (err is FormatException) {
+            _err = err;
+          } else {
+            _err = null;
+          }
+        });
+      });
+    }
+  }
 
   Future<bool> authUser() async {
     try {
@@ -27,55 +85,22 @@ class _LoginState extends State<Login> {
       );
       return true;
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
       return false;
     }
   }
 
-  Future<bool> authGoogle() async {
-    try {
+  @override
+  void initState() {
+    initURIHandler();
+    incomingLinkHandler();
+    super.initState();
+  }
 
-        final result = await pb.collection('users').listAuthMethods();
-        const callbackUrlScheme = 'w2b.com';
-        const googleClientId = '456269539101-a3gse15pqgmfqpepp6a66cl5jds52cuh';
-        const redirectUri = 'http://192.168.8.115.nip.io:8080/';
-
-        final url = Uri.https('accounts.google.com', '/o/oauth2/auth', {
-          'response_type': 'code',
-          'client_id': googleClientId,
-          'redirect_uri': redirectUri,
-          'scope': 'email',
-        });
-
-        for (var element in result.authProviders) {
-          if (element.name == "google") {
-            final result = await FlutterWebAuth2.authenticate(
-                url: element.authUrl + redirectUri,
-                callbackUrlScheme: callbackUrlScheme
-            );
-            final code = Uri
-                .parse(result)
-                .queryParameters['code'];
-            print(code);
-            print("AuthURL: ${element.authUrl}");
-            await pb.collection('users').authWithOAuth2(
-              'google',
-              code!,
-              element.codeVerifier,
-              "https://w2b.com",
-
-            );
-          }
-        }
-
-        print(pb.authStore.token);
-
-
-      return true;
-    } catch(e) {
-        print(e);
-        return false;
-      }
+  @override
+  void dispose() {
+    _streamSubscription?.cancel();
+    super.dispose();
   }
 
   @override
@@ -93,6 +118,7 @@ class _LoginState extends State<Login> {
           ),
           child: Column(
             children: [
+              //LOGO
               Padding(
                 padding: const EdgeInsets.only(top: 100, bottom: 30),
                   child: SvgPicture.asset(
@@ -100,6 +126,9 @@ class _LoginState extends State<Login> {
                     width: 350,
                   )
               ),
+
+              //ZALOGUJ SIĘ NAPIS
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Column(
@@ -119,74 +148,29 @@ class _LoginState extends State<Login> {
                           )
                       ),
                     ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF393838),
-                        borderRadius: BorderRadius.all(Radius.circular(10))
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 2, 0, 2),
-                        child: TextFormField(
-                          controller: emailController,
-                            decoration: const InputDecoration(
-                              hintText: "Email",
-                              hintStyle: TextStyle(
-                                fontFamily: "Lato",
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF616161),
-                              ),
-                              suffixIcon: Icon(
-                                Icons.email_outlined,
-                                color: Color(0xFF616161),
-                              ),
-                              border: InputBorder.none,
-                          ),
-                          cursorColor: Colors.white,
-                          style: const TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
+
+                    //EMAIL BOX
+
+                    AutTextField(
+                      controller: emailController,
+                      hintText: 'Email',
+                      icon: Icons.email_outlined,
                     ),
+
+                    //HASŁO BOX
+
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            color: Color(0xFF393838),
-                            borderRadius: BorderRadius.all(Radius.circular(10))
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(12, 2, 0, 2),
-                          child: TextFormField(
+                      child: AutTextField(
                             controller: passwordController,
-                            decoration: const InputDecoration(
-                              hintText: "Hasło",
-                              hintStyle: TextStyle(
-                                fontFamily: "Lato",
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF616161),
-                              ),
-                              suffixIcon: Icon(
-                                Icons.lock_outline,
-                                color: Color(0xFF616161),
-                              ),
-                              border: InputBorder.none,
-                            ),
-                            cursorColor: Colors.white,
-                            style: const TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500
-                            ),
+                            hintText: 'Hasło',
+                            icon: Icons.lock_outline,
                             obscureText: true,
-                          ),
-                        ),
-                      ),
+                          )
                     ),
+
+                    //ZALOGUJ SIĘ BUTTON
+
                     TextButton(
                         onPressed: () async {
                             if(!await authUser()) {
@@ -227,6 +211,9 @@ class _LoginState extends State<Login> {
                         ),
 
                     ),
+
+                    //POLITYKA PRYWATNOŚCI
+
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 30),
                       child: RichText(
@@ -248,11 +235,14 @@ class _LoginState extends State<Login> {
                           )
                       ),
                     ),
+
+                    //GOOGLE LOGIN
+
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 40),
                       child: GestureDetector(
-                        onTap: () {
-                          authGoogle();
+                        onTap: () async {
+                          await launch("http://what2bake.com?code=siema");
                         },
                         child: SvgPicture.asset(
                             "assets/google.svg",
@@ -260,6 +250,9 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
+
+                    //REGISTER SUGGESTION
+
                     Padding(
                       padding: const EdgeInsets.only(top: 40),
                       child: Align(
@@ -281,7 +274,7 @@ class _LoginState extends State<Login> {
                                         Navigator.push(
                                                   context,
                                           PageRouteBuilder(
-                                            pageBuilder: (context, animation, secondaryAnimation) => Register(),
+                                            pageBuilder: (context, animation, secondaryAnimation) => const Register(),
                                             transitionsBuilder: (context, animation, secondaryAnimation, child) {
                                               return FadeTransition(
                                                 opacity: animation,

@@ -32,7 +32,7 @@ class _AppbarState extends State<Appbar> {
     if(pb.authStore.isValid) {
       final record = await pb.collection('users').getOne(pb.authStore.model.id);
       if(record.data['avatar'] != "") {
-        avatImg = "http://130.162.33.102:9090/api/files/${record.collectionId}/${record.id}/${record.data['avatar']}";
+        avatImg = "http://pb.what2bake.com/api/files/${record.collectionId}/${record.id}/${record.data['avatar']}";
       }
     } else {
       avatImg = "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/728880/77c1d34497f69650959e1e48184f228a9f5f8b10.gif";
@@ -43,6 +43,7 @@ class _AppbarState extends State<Appbar> {
   @override
   void initState() {
     pb.authStore.onChange.listen((event) {
+      print("changed");
       setState(() {
 
       });

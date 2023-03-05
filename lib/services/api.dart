@@ -4,11 +4,10 @@ import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
 var client = http.Client();
+const apiUrl = "http://api.what2bake.com";
 
 Future<dynamic> getAllProducts() async {
 
-  var url = 'http://130.162.33.102:8080/product/';
-  var url2 = 'http://130.162.33.102:8080/category/';
   var body = {
     "productOrder": ["ALPHABETIC_ASC"]
   };
@@ -16,16 +15,13 @@ Future<dynamic> getAllProducts() async {
 
     //GETALLPRODUCTS
 
-    var request = http.Request('GET', Uri.parse(url));
+    var request = http.Request('GET', Uri.parse("$apiUrl/product/"));
     request.headers['Content-Type'] = 'application/json';
     request.body = convert.jsonEncode(body);
 
     http.StreamedResponse response = await client.send(request);
     String data = await response.stream.transform(convert.utf8.decoder).join();
     var jsonData = convert.jsonDecode(data);
-
-    //print(response.statusCode);
-    //print(data);
 
     final prefs = await SharedPreferences.getInstance();
     var pressed = prefs.getStringList('0') ?? [];
@@ -37,7 +33,7 @@ Future<dynamic> getAllProducts() async {
 
     //GETALLCATEGORIES
 
-    var request2 = http.Request('GET', Uri.parse(url2));
+    var request2 = http.Request('GET', Uri.parse("$apiUrl/category/"));
     request2.headers['Content-Type'] = 'application/json';
     request2.body = convert.jsonEncode(body);
 
@@ -45,13 +41,8 @@ Future<dynamic> getAllProducts() async {
     String data2 = await response2.stream.transform(convert.utf8.decoder).join();
     var jsonData2 = convert.jsonDecode(data2);
 
-    //print(response2.statusCode);
-    //print(data2);
-
-
     List<Category> categories = [];
     for (var res2 in jsonData2) {
-      //print(Category.fromJson(res2));
       categories.add(Category.fromJson(res2));
     }
 
@@ -66,7 +57,6 @@ Future<dynamic> getRecipes(int page) async {
   final prefs = await SharedPreferences.getInstance();
   var products = prefs.getStringList('0')?.isEmpty == false ? prefs.getStringList('0')!.map(int.parse).toList() : [0];
 
-  var url = 'http://130.162.33.102:8080/recipe/';
   Map<String, Object> body;
   if(products == [0]) {
     body = {
@@ -83,19 +73,14 @@ Future<dynamic> getRecipes(int page) async {
 
   try {
 
-    //GETALLPRODUCTS
-
-    var request = http.Request('GET', Uri.parse(url));
+    //GETALLRECIPES
+    var request = http.Request('GET', Uri.parse("$apiUrl/recipe/"));
     request.headers['Content-Type'] = 'application/json';
     request.body = convert.jsonEncode(body);
 
     http.StreamedResponse response = await client.send(request);
     String data = await response.stream.transform(convert.utf8.decoder).join();
     var jsonData = convert.jsonDecode(data);
-
-    //print(response.statusCode);
-    //print(data);
-
 
     List recipes = [];
     List<int> similarity = [];

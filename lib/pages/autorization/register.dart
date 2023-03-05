@@ -2,8 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:what2bake/pages/login.dart';
-
+import 'package:what2bake/pages/autorization/login.dart';
+import 'package:what2bake/pages/autorization/widgets/AutTextField.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -13,6 +13,10 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final secondPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +33,9 @@ class _RegisterState extends State<Register> {
           ),
           child: Column(
             children: [
+
+              //LOGO
+
               Padding(
                   padding: const EdgeInsets.only(top: 100, bottom: 30),
                   child: SvgPicture.asset(
@@ -36,10 +43,14 @@ class _RegisterState extends State<Register> {
                     width: 350,
                   )
               ),
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Column(
                     children: [
+
+                      //ZAREJESTRUJ SIĘ NAPIS
+
                       const Padding(
                         padding: EdgeInsets.symmetric(vertical: 10),
                         child: Align(
@@ -55,102 +66,38 @@ class _RegisterState extends State<Register> {
                             )
                         ),
                       ),
-                      Container(
-                        decoration: const BoxDecoration(
-                            color: Color(0xFF393838),
-                            borderRadius: BorderRadius.all(Radius.circular(10))
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(12, 2, 0, 2),
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                              hintText: "Email",
-                              hintStyle: TextStyle(
-                                fontFamily: "Lato",
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF616161),
-                              ),
-                              suffixIcon: Icon(
-                                Icons.email_outlined,
-                                color: Color(0xFF616161),
-                              ),
-                              border: InputBorder.none,
-                            ),
-                            cursorColor: Colors.white,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
+
+                      //EMAIL BOX
+
+                      AutTextField(
+                          controller: emailController,
+                          hintText: "Email",
+                          icon: Icons.email_outlined,
                       ),
+
+                      //HASŁO BOX
+
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 20),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                              color: Color(0xFF393838),
-                              borderRadius: BorderRadius.all(Radius.circular(10))
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(12, 2, 0, 2),
-                            child: TextFormField(
-                              decoration: const InputDecoration(
-                                hintText: "Hasło",
-                                hintStyle: TextStyle(
-                                  fontFamily: "Lato",
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFF616161),
-                                ),
-                                suffixIcon: Icon(
-                                  Icons.lock_outline,
-                                  color: Color(0xFF616161),
-                                ),
-                                border: InputBorder.none,
-                              ),
-                              cursorColor: Colors.white,
-                              style: const TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500
-                              ),
-                            ),
-                          ),
-                        ),
+                        child: AutTextField(
+                          controller: passwordController,
+                          hintText: "Hasło",
+                          icon: Icons.lock_outline,
+                          obscureText: true,
+                        )
                       ),
-                      Container(
-                        decoration: const BoxDecoration(
-                            color: Color(0xFF393838),
-                            borderRadius: BorderRadius.all(Radius.circular(10))
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(12, 2, 0, 2),
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                              hintText: "Powtórz hasło",
-                              hintStyle: TextStyle(
-                                fontFamily: "Lato",
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF616161),
-                              ),
-                              suffixIcon: Icon(
-                                Icons.lock_outline,
-                                color: Color(0xFF616161),
-                              ),
-                              border: InputBorder.none,
-                            ),
-                            cursorColor: Colors.white,
-                            style: const TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500
-                            ),
-                          ),
-                        ),
+
+                      //POWTÓRZ HASŁO BOX
+
+                      AutTextField(
+                          controller: secondPasswordController,
+                          hintText: "Powtórz hasło",
+                          icon: Icons.lock_outline,
+                          obscureText: true,
                       ),
+
+                      //ZAREJESTRUJ SIĘ BUTTON
+
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 20),
                         child: TextButton(
@@ -166,7 +113,7 @@ class _RegisterState extends State<Register> {
                           child: const Padding(
                             padding: EdgeInsets.symmetric(horizontal: 30,vertical: 2),
                             child: Text(
-                              "Zaloguj się",
+                              "Zarejestruj się",
                               style: TextStyle(
                                   fontSize: 24,
                                   color: Color(0xFF232323),
@@ -178,6 +125,9 @@ class _RegisterState extends State<Register> {
 
                         ),
                       ),
+
+                      //POLITYKA PRYWATNOŚCI
+
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: RichText(

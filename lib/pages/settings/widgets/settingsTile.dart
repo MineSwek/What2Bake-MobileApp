@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:what2bake/data/globalvar.dart';
 
 class SettingsTile extends StatefulWidget {
-  final width;
-  final height;
-  final localisation;
-  final icon;
-  final title;
-  const SettingsTile({super.key, this.width, this.height, this.localisation, this.icon, this.title, });
+  final double width;
+  final double height;
+  final String localisation;
+  final IconData icon;
+  final String title;
+  const SettingsTile({super.key, required this.width, required this.height, required this.localisation, required this.icon, required this.title, });
 
   @override
   State<SettingsTile> createState() => _SettingsTileState();
@@ -18,7 +19,12 @@ class _SettingsTileState extends State<SettingsTile> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, widget.localisation);
+        if(widget.localisation != "/") {
+          Navigator.pushNamed(context, widget.localisation);
+        } else {
+          pb.authStore.clear();
+          Navigator.pushNamed(context, widget.localisation);
+        }
       },
       child: ListTile(
         tileColor: const Color(0xFF232323),

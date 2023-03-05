@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:what2bake/services/api.dart';
 import 'package:what2bake/services/model.dart';
-import 'package:what2bake/widgets/ingredientCard.dart';
+import 'package:what2bake/pages/ingredients/widgets/ingredientCard.dart';
 
 class Ingredients extends StatefulWidget {
   const Ingredients({super.key});
@@ -14,7 +14,6 @@ class Products {
   int? id;
   List<Product> temp1 = [];
   List<String> temp2 = [];
-
 }
 
 class _IngredientsState extends State<Ingredients> {

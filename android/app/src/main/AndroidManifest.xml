@@ -32,8 +32,10 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" android:host="flutterbooksample.com" />
-                <data android:scheme="https" />
+                <!-- Accepts URIs that begin with https://YOUR_HOST -->
+                <data
+                    android:scheme="http"
+                    android:host="unilinks.example.com" />
             </intent-filter>
 
         </activity>
