@@ -56,6 +56,7 @@ dependencies:
   shared_preferences: any
   syncfusion_flutter_core: any
   http: any
+  flutter_launcher_icons: ^0.14.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -67,6 +68,15 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
 
+flutter_native_splash:
+  background_image: assets/backgrounds/loadingBackground.png
+  image: assets/logo/What2Bake.png
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: false
+  image_path: "assets/icon/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

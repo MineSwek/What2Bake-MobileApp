@@ -10,9 +10,9 @@
     </queries>
 
     <application
-        android:label="what2bake"
+        android:label="What2Bake"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
