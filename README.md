@@ -17,7 +17,7 @@ What2Bake to innowacyjna aplikacja kulinarna, która przenosi twoje gotowanie na
 
 - **🔍 Zaawansowane wyszukiwanie:** Filtruj przepisy po składnikach, kategoriach, tagach i więcej!  
 - **❤️ Ulubione przepisy:** Zapisuj swoje ulubione przepisy i wracaj do nich w każdej chwili.  
-- **👨‍🍳 Społeczność pasjonatów:** Dołącz do społeczności, oceniaj przepisy i dziel się swoimi pomysłami!  
+- **👨‍🍳 Społeczność pasjonatów:** Dołącz do społeczności, oceniaj przepisy!  
 
 Nie trać więcej czasu na zastanawianie się, co upiec. What2Bake dostarcza ci pomysły na smaczne i zaskakujące przepisy, które możesz przygotować już teraz. 
 
