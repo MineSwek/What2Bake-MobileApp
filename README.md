@@ -2,39 +2,31 @@
 
 <img src="https://user-images.githubusercontent.com/85877644/218215835-3b2b50e2-53bc-4dfc-baf7-4c33c1461b3b.png" width="100%">
 
-<h2>Aplikacja Mobilna What2Bake</h2>
+## 🎉 Aplikacja Mobilna What2Bake
 
-Api: https://github.com/poneciak57/WhatToBake-api <br>
-Aplikacja jest dostępna do pobrania w Sklepie Play: "Link wkrótce"
+**API:** [WhatToBake-api](https://github.com/poneciak57/WhatToBake-api)  
+**Aplikacja dostępna w Sklepie Play:** *"Link wkrótce"* 🔜
 
-Czy zdarza ci się mieć spiżarnię pełną pysznych składników, ale brak pomysłów na to, co z nich upiec? Nie musisz już dłużej tracić czasu na przeszukiwanie kuchennych szafek w poszukiwaniu inspiracji! What2Bake to twoje magiczne rozwiązanie na łatwe i smaczne rozwiązanie kulinarne.
-What2Bake to innowacyjna aplikacja kulinarna, która przenosi twoje gotowanie na zupełnie nowy poziom. Nasza inteligentna platforma pozwala użytkownikom przeszukiwać tysiące przepisów, dostosowując je do dostępnych składników w twojej spiżarni. Nie tylko oszczędzasz czas i pieniądze, unikając marnowania żywności, ale także tworzysz pyszne potrawy z tego, co masz pod ręką.
+Czy zdarza ci się mieć spiżarnię pełną pysznych składników, ale brak pomysłów na to, co z nich upiec? 🧁 Nie musisz już dłużej tracić czasu na przeszukiwanie kuchennych szafek w poszukiwaniu inspiracji! What2Bake to twoje magiczne rozwiązanie na łatwe i smaczne dania. ✨  
 
-<h2>Co czyni What2Bake wyjątkowym?</h2>
+What2Bake to innowacyjna aplikacja kulinarna, która przenosi twoje gotowanie na zupełnie nowy poziom. Nasza inteligentna platforma pozwala przeszukiwać tysiące przepisów, dostosowując je do składników w twojej spiżarni. Nie tylko oszczędzasz czas i pieniądze, ale także tworzysz pyszne potrawy z tego, co masz pod ręką. 🍪  
 
-Wyszukiwanie zaawansowane: Nasza aplikacja oferuje zaawansowane filtry, dzięki którym znajdziesz idealny przepis w mgnieniu oka. Możesz przeszukiwać po posiadanych składnikach, kategoriach przepisów, tagach i wielu innych kryteriach.
-Zapisywanie ulubionych przepisów: Dodawaj ulubione przepisy do swojej listy i łatwo wracaj do nich w przyszłości. To doskonały sposób na organizację swojego kulinarnego repertuaru.
-Społeczność pasjonatów pieczenia: Przyłącz się do naszej aktywnej społeczności miłośników pieczenia. Oceniaj przepisy dodawaj je do ulubionych, a może kiedyś i dodaj własne autorskie przepisy.
-Nie trać więcej czasu na zastanawianie się, co upiec. What2Bake dostarcza ci pomysły na smaczne i zaskakujące przepisy, które możesz przygotować już teraz. Zapisuj, piecz i ciesz się pysznymi wypiekami z What2Bake – twoim niezastąpionym towarzyszem w kuchni! Gotowi na kulinarne przygody? Pobierz What2Bake już teraz!
+---
 
-<div style="display: grid; width: 100%">
+## 🔥 Co czyni What2Bake wyjątkowym?
 
-  <img src="https://github.com/user-attachments/assets/5ef53aac-ff2b-4040-9677-f0a56d5c52cc" style="width: 18%">
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://github.com/user-attachments/assets/6cbd3ac9-92ab-47ab-af54-2e9c6c121198" style="width: 18%">
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://github.com/user-attachments/assets/62231225-3c66-45f1-9a0c-8c3fd49f2231" style="width: 18%">
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://github.com/user-attachments/assets/cebf6e36-ecb9-4ad0-a7f4-36f3184917ce" style="width: 18%">
+- **🔍 Zaawansowane wyszukiwanie:** Filtruj przepisy po składnikach, kategoriach, tagach i więcej!  
+- **❤️ Ulubione przepisy:** Zapisuj swoje ulubione przepisy i wracaj do nich w każdej chwili.  
+- **👨‍🍳 Społeczność pasjonatów:** Dołącz do społeczności, oceniaj przepisy i dziel się swoimi pomysłami!  
 
-</div>
+Nie trać więcej czasu na zastanawianie się, co upiec. What2Bake dostarcza ci pomysły na smaczne i zaskakujące przepisy, które możesz przygotować już teraz. 
+
+---
+
+## 📸 Zdjęcia poglądowe aplikacji
 
 
-
-
-<h1>Zdjęcia poglądowe Aplikacji</h1>
-
-<h2>Startowy poradnik w aplikacji</h2>
+### Startowy poradnik w aplikacji
 
 <div style="display: grid; width: 100%">
 
@@ -51,9 +43,8 @@ Nie trać więcej czasu na zastanawianie się, co upiec. What2Bake dostarcza ci 
 </div>
 
 
-<h2>Aplikacja przed zalogowaniem</h2>
-
-<h3>Podstawowe panele nawigacji</h3>
+### 🏠 Aplikacja przed zalogowaniem
+#### Podstawowe panele nawigacji
 
 <div style="display: grid; width: 100%">
   
@@ -67,7 +58,7 @@ Nie trać więcej czasu na zastanawianie się, co upiec. What2Bake dostarcza ci 
 
 </div>
   
-<h3>Customizacja sortowania i filtrowania</h3>
+#### 🛠️ Customizacja sortowania i filtrowania
 
 <div style="display: grid; width: 100%">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -79,7 +70,7 @@ Nie trać więcej czasu na zastanawianie się, co upiec. What2Bake dostarcza ci 
 
 </div>
 
-<h3>Ustawienia, Logowanie oraz Rejestracja</h3>
+#### ⚙️ Ustawienia, Logowanie oraz Rejestracja
 
 <div style="display: grid; width: 100%">
   
@@ -93,7 +84,7 @@ Nie trać więcej czasu na zastanawianie się, co upiec. What2Bake dostarcza ci 
 
 </div>
 
-<h3>Pokazowe zdjęcia Jasnego Motywu</h3>
+#### Jasny motyw
 
 <div style="display: grid; width: 100%">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -109,7 +100,7 @@ Nie trać więcej czasu na zastanawianie się, co upiec. What2Bake dostarcza ci 
 
 
 
-<h2>Zmiany w Aplikacji po Zalogowaniu</h2>
+## 🔄 Zmiany w aplikacji po zalogowaniu
 
 <div style="display: grid; width: 100%">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
