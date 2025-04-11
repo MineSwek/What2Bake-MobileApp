@@ -5,7 +5,8 @@
 ## 🎉 Aplikacja Mobilna What2Bake
 
 **API:** [WhatToBake-api](https://github.com/poneciak57/WhatToBake-api)  
-**Aplikacja dostępna w Sklepie Play:** *"Link wkrótce"* 🔜
+**Aplikacja dostępna w Sklepie Play:** 
+https://play.google.com/store/apps/details?id=what2bake.pl.what2bake
 
 Czy zdarza ci się mieć spiżarnię pełną pysznych składników, ale brak pomysłów na to, co z nich upiec? 🧁 Nie musisz już dłużej tracić czasu na przeszukiwanie kuchennych szafek w poszukiwaniu inspiracji! What2Bake to twoje magiczne rozwiązanie na łatwe i smaczne dania. ✨  
 
